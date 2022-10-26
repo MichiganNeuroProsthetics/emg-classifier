@@ -32,7 +32,7 @@ def get_rising_falling_slopes(window_arr):
 
 class LinearSlopePredictor(WindowPredictor):
 
-    def LinearSlopePredictor(self):
+    def __init__(self):
         super.__init__()
         self.rising_slope_min = None
         self.falling_slope_max = None
