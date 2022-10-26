@@ -3,6 +3,7 @@ import os
 import pickle
 
 # Combine data from EMG_data_for_gestures-master into one dataframe
+
 def get_ring_dataset():
     fileList = []
     personNum = ""
@@ -14,9 +15,15 @@ def get_ring_dataset():
         # Otherwise just convert it to a string
         else:
             personNum = str(i)
-        # Iterate through all the files in the directory
+
+        # What does this line do?
         smallList = os.listdir("EMG_data_for_gestures-master/" + personNum)
+
+        # We have 2 classes, arm at rest and flexing.
         for i in range(2):
+            # Create a "smallList" of each data set pair. index[1] represents arm at rest data
+            # ...and index 2 represents arm flexing data. We're simply creating a list of
+            # ...2 indexes long, where the index corresponds to classification of signal
             smallList[i] = "EMG_data_for_gestures-master/" + personNum + "/" + smallList[i]
 
     fileList.extend(smallList)
