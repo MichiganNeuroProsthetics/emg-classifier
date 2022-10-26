@@ -7,10 +7,27 @@ import numpy as np
 class WindowPredictor:
 
     def __init__(self):
+        """
+        Initialize variables/data structures that are
+        set when the train function called
+        """
         self.trained = False
     
     def train(self, windows, labels):
+        """
+        Arguments:
+            windows: list of 1D numpy array of EMG values
+            labels: list of labels for each window
+        Return:
+            nothing, just set variables
+        """
         raise Exception("Implement train")
 
     def label_window(self, window):
+        """
+        Arguments:
+            window: 1D numpy array of EMG values
+        Return:
+            boolean of whether window is a flex or not
+        """
         raise Exception("Implement label_window")
