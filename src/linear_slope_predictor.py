@@ -69,8 +69,8 @@ class LinearSlopePredictor(WindowPredictor):
 
     def label_window(self, window):
         rising_slope, falling_slope = get_rising_falling_slopes(window)
-        return rising_slope > self.rising_slope_min or \
-                falling_slope < self.falling_slope_max
+        return rising_slope >= self.rising_slope_min and \
+                falling_slope <= self.falling_slope_max
 
 
 if __name__ == "__main__":
