@@ -21,6 +21,7 @@ class WindowPredictor:
         Return:
             nothing, just set variables
         """
+        self.trained = True
         print("no train implementation")
 
     def label_window(self, window):
