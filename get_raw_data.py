@@ -27,3 +27,4 @@ def get_ring_dataset():
 
 combined_data = get_ring_dataset()
 combined_data.to_pickle("combined_data.pkl")
+combined_data.to_csv("combined_data.csv")

@@ -33,7 +33,7 @@ def get_rising_falling_slopes(window_arr):
 class LinearSlopePredictor(WindowPredictor):
 
     def __init__(self):
-        super.__init__()
+        self.trained = False
         self.rising_slope_min = None
         self.falling_slope_max = None
 
@@ -69,12 +69,12 @@ class LinearSlopePredictor(WindowPredictor):
 
     def label_window(self, window):
         rising_slope, falling_slope = get_rising_falling_slopes(window)
-        return rising_slope > self.rising_slope_min and \
+        return rising_slope > self.rising_slope_min or \
                 falling_slope < self.falling_slope_max
 
 
 if __name__ == "__main__":
-    raw_data = pd.read_pickle("../combined_data.pkl")
+    raw_data = pd.read_pickle("combined_data.pkl")
     raw_data = raw_data[raw_data['class'] != 0]
     raw_data.loc[raw_data['class'] != 2] = 0
     raw_data.loc[raw_data['class'] == 2] = 1
@@ -82,13 +82,13 @@ if __name__ == "__main__":
         "class": "y",
         "channel1": "x"
     })
-    train_data = raw_data.head(50000)
+    train_data = raw_data.head(1000000)
     x_windows, y_labels = raw_to_labeled_windows(train_data)
     linear_predictor = LinearSlopePredictor()
     linear_predictor.train(x_windows, y_labels)
     print(linear_predictor.rising_slope_min, linear_predictor.falling_slope_max)
 
-    test_data = raw_data.tail(50000)
+    test_data = raw_data.tail(1000000)
     x_labels, y_labels = raw_to_labeled_windows(test_data)
     tp = fp = tn = fn = 0
     for i in range(len(x_labels)):
