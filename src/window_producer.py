@@ -53,7 +53,7 @@ def window_by_labels(X, y, min_window_size=50, padding=10):
     return x_windows, y_labels
 
 
-def raw_to_labeled_windows(raw_df):
+def raw_to_labeled_windows(raw_df, min_window_size=50, padding=10):
     """
     Arguments:
         raw_df: pandas dataframe with columns x, y
@@ -63,7 +63,7 @@ def raw_to_labeled_windows(raw_df):
     """
     x_list = list(raw_df['x'])
     y_list = list(raw_df['y'])
-    x_windows, y_labels = window_by_labels(x_list, y_list)
+    x_windows, y_labels = window_by_labels(x_list, y_list, min_window_size, padding)
     return x_windows, y_labels
 
 
