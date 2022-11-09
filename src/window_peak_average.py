@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import window_predictor as WindowPredictor
+from window_predictor import WindowPredictor
 import math
 
 def window_peak_val(window_array):
@@ -13,7 +13,7 @@ def window_peak_val(window_array):
 class Average_window_max_predictor(WindowPredictor):
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.peak = None
         self.peaks_flexing_avg = 0
         self.peaks_resting_avg = 0
