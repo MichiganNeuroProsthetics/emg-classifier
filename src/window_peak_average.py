@@ -35,8 +35,8 @@ class Average_window_max_predictor(WindowPredictor):
 
             idx += 1
 
-        peaks_flexing_avg = np.average(peaks_flexing)
-        peaks_resting_avg = np.average(peaks_resting)
+        self.peaks_flexing_avg = np.average(peaks_flexing)
+        self.peaks_resting_avg = np.average(peaks_resting)
 
         self.trained = True
 
